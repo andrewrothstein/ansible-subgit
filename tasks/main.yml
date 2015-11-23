@@ -1,27 +1,8 @@
 ---
-- name: (Ubuntu) download subgit...
-  when: ansible_distribution == "Ubuntu"
-  environment: proxy_env
-  get_url: url={{ subgit_deb_url }} dest='/tmp/{{ subgit_deb }}'
+- name: (Debian) install...
+  when: ansible_os_family == 'Debian'
+  include: Debian.yml
 
-- name: (Ubuntu) install subgit....
-  when: ansible_distribution == "Ubuntu"
-  environment: proxy_env
-  apt: deb='/tmp/{{ subgit_deb }}'
-
-- name: (Fedora) download subgit...
-  when: ansible_distribution == 'Fedora'
-  environment: proxy_env
-  get_url: url='{{ subgit_zip_url }}' dest='/tmp/{{ subgit_zip }}'
-
-- name: (Fedora) unachive subgit...
-  when: ansible_distribution == 'Fedora'
-  unarchive: copy=no src='/tmp/{{ subgit_zip }}' dest='/opt'
-
-- name: (Feodra) link subgit...
-  when: ansible_distribution == 'Fedora'
-  file: src='/opt/{{ subgit_name }}' dest='/opt/subgit' state=link
-
-- name: (Fedora) add subgit into the default path
-  when: ansible_distribution == 'Fedora'
-  copy: src='etc/profile.d/subgit.sh' dest='/etc/profile.d/subgit.sh'
+- name: (Generic) install...
+  when: ansible_os_family != 'Debian'
+  include: Generic.yml
