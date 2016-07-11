@@ -13,19 +13,21 @@
   unarchive: >
     copy=no
     src=/tmp/{{subgit_zip}}
-    dest=/opt
+    dest={{subgit_home}}
 
 - name: link subgit
   become: yes
   become_user: root
   file: >
-    src=/opt/{{subgit_name}}
-    dest=/opt/subgit
+    src={{subgit_home}}/{{subgit_name}}
+    dest={{subgit_home}}/subgit
     state=link
 
 - name: add subgit into the default path
   become: yes
   become_user: root
-  copy: >
-    src=etc/profile.d/subgit.sh
-    dest=/etc/profile.d/subgit.sh
+  with_items:
+    - etc/profile.d/subgit.sh
+  template: >
+    src={{item}}.j2
+    dest=/{{item}}
