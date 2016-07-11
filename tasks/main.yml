@@ -1,8 +1,31 @@
 ---
-- name: (Debian) install...
-  when: ansible_os_family == 'Debian'
-  include: Debian.yml
+- name: download
+  become: yes
+  become_user: root
+  get_url: >
+    url={{subgit_zip_url}}
+    dest=/tmp/{{subgit_zip}}'
+    mode=0644
 
-- name: (Generic) install...
-  when: ansible_os_family != 'Debian'
-  include: Generic.yml
+- name: unachive
+  become: yes
+  become_user: root
+  unarchive: >
+    copy=no
+    src=/tmp/{{subgit_zip}}
+    dest=/opt
+
+- name: link subgit
+  become: yes
+  become_user: root
+  file: >
+    src=/opt/{{subgit_name}}
+    dest=/opt/subgit
+    state=link
+
+- name: add subgit into the default path
+  become: yes
+  become_user: root
+  copy: >
+    src=etc/profile.d/subgit.sh
+    dest=/etc/profile.d/subgit.sh

@@ -1,6 +1,0 @@
----
-- name: (Ubuntu) download subgit...
-  get_url: url={{ subgit_deb_url }} dest='/tmp/{{ subgit_deb }}'
-
-- name: (Ubuntu) install subgit....
-  apt: deb='/tmp/{{ subgit_deb }}'
