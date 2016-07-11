@@ -2,3 +2,4 @@
 subgit_version : '3.2.0'
 subgit_mirror : 'http://old.subgit.com/download'
 subgit_home : /opt
+subgit_timeout_seconds : 600

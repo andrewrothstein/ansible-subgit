@@ -6,6 +6,7 @@
     url={{subgit_zip_url}}
     dest=/tmp/{{subgit_zip}}
     mode=0644
+    timeout={{subgit_timeout_seconds}}
 
 - name: unachive
   become: yes
