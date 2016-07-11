@@ -4,7 +4,7 @@
   become_user: root
   get_url: >
     url={{subgit_zip_url}}
-    dest=/tmp/{{subgit_zip}}'
+    dest=/tmp/{{subgit_zip}}
     mode=0644
 
 - name: unachive
