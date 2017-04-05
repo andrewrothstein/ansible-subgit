@@ -1,5 +1,6 @@
 ---
-subgit_version : '3.2.0'
-subgit_mirror : 'http://old.subgit.com/download'
-subgit_home : /opt
+subgit_version : '3.2.4'
+subgit_checksum: sha256:5c2a880c277b2c3250c726302f76a49c7e3d0b62ceaa13e4d0cb90f94584268f
+subgit_mirror : 'https://subgit.com/download'
+subgit_parent_install_dir : /usr/local
 subgit_timeout_seconds : 600

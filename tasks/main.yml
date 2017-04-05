@@ -2,33 +2,37 @@
 - name: download
   become: yes
   become_user: root
-  get_url: >
-    url={{subgit_zip_url}}
-    dest=/tmp/{{subgit_zip}}
-    mode=0644
-    timeout={{subgit_timeout_seconds}}
+  get_url:
+    url: '{{subgit_zip_url}}'
+    dest: /tmp/{{subgit_zip}}
+    mode: 0644
+    timeout: '{{subgit_timeout_seconds}}'
+    checksum: '{{subgit_checksum}}'
 
 - name: unachive
   become: yes
   become_user: root
-  unarchive: >
-    copy=no
-    src=/tmp/{{subgit_zip}}
-    dest={{subgit_home}}
+  unarchive:
+    copy: no
+    src: /tmp/{{subgit_zip}}
+    dest: '{{subgit_install_parent_dir}}'
 
 - name: link subgit
   become: yes
   become_user: root
-  file: >
-    src={{subgit_home}}/{{subgit_name}}
-    dest={{subgit_home}}/subgit
-    state=link
+  file:
+    src: '{{subgit_install_dir}}'
+    dest: '{{subgit_install_parent_dir}}/subgit'
+    state: link
 
 - name: add subgit into the default path
   become: yes
   become_user: root
   with_items:
-    - etc/profile.d/subgit.sh
-  template: >
-    src={{item}}.j2
-    dest=/{{item}}
+    - d: /etc/profile.d
+      f: subgit.sh
+      m: '0644'
+  template:
+    src: '{{item}.f}.j2'
+    dest: '{{item.d}}/{{item.f}}'
+    mode: '{{item.m}}'

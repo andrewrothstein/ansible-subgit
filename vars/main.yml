@@ -1,4 +1,8 @@
 ---
 subgit_name : 'subgit-{{subgit_version}}'
-subgit_zip : '{{subgit_name }}.zip'
+subgit_zip : '{{subgit_name}}.zip'
+
+# https://subgit.com/download/subgit-3.2.4.zip
 subgit_zip_url : '{{subgit_mirror}}/{{subgit_zip}}'
+
+subgit_install_dir: '{{subgit_parent_install_dir}}/{{subgit_name}}'
