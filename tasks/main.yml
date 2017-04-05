@@ -15,14 +15,14 @@
   unarchive:
     copy: no
     src: /tmp/{{subgit_zip}}
-    dest: '{{subgit_install_parent_dir}}'
+    dest: '{{subgit_parent_install_dir}}'
 
 - name: link subgit
   become: yes
   become_user: root
   file:
     src: '{{subgit_install_dir}}'
-    dest: '{{subgit_install_parent_dir}}/subgit'
+    dest: '{{subgit_parent_install_dir}}/subgit'
     state: link
 
 - name: add subgit into the default path
