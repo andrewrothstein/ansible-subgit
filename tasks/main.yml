@@ -13,7 +13,7 @@
   become: yes
   become_user: root
   unarchive:
-    remote_src: no
+    remote_src: yes
     src: /tmp/{{subgit_zip}}
     dest: '{{subgit_parent_install_dir}}'
 
