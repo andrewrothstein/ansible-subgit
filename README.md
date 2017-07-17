@@ -1,8 +1,8 @@
-[![CircleCI](https://circleci.com/gh/andrewrothstein/ansible-subgit.svg?style=svg)](https://circleci.com/gh/andrewrothstein/ansible-subgit)
 andrewrothstein.subgit
 ===========================
+[![Build Status](https://travis-ci.org/andrewrothstein/ansible-subgit.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-subgit)
 
-A role for installing [SubGit](https://subgit.com/)
+Installs [SubGit](https://subgit.com/)
 
 Requirements
 ------------
