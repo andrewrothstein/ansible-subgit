@@ -1,28 +1,42 @@
 ---
-- name: download
+- name: check for install...
   become: yes
-  become_user: root
-  get_url:
-    url: '{{subgit_zip_url}}'
-    dest: /tmp/{{subgit_zip}}
-    mode: 0644
-    timeout: '{{subgit_timeout_seconds}}'
-    checksum: '{{subgit_checksum}}'
-
-- name: unachive
-  become: yes
-  become_user: root
-  unarchive:
-    remote_src: yes
-    src: /tmp/{{subgit_zip}}
-    dest: '{{subgit_parent_install_dir}}'
-
+  stat:
+    path: '{{subgit_install_dir}}'
+  changed_when: False
+  register: subgit_binary
+- when: not subgit_binary.stat.exists
+  block:
+    - name: download
+      become: yes
+      become_user: root
+      get_url:
+        url: '{{subgit_zip_url}}'
+        dest: /tmp/{{subgit_zip}}
+        mode: 0644
+        timeout: '{{subgit_timeout_seconds}}'
+        checksum: '{{subgit_checksum}}'
+    - name: unachive
+      become: yes
+      become_user: root
+      unarchive:
+        remote_src: yes
+        src: /tmp/{{subgit_zip}}
+        dest: '{{subgit_parent_install_dir}}'
+        creates: '{{subgit_install_dir}}'
+  always:
+    - name: cleanup
+      become: yes
+      become_user: root
+      file:
+        path: /tmp/{{subgit_zip}}
+        state: absent
 - name: link subgit
   become: yes
   become_user: root
   file:
     src: '{{subgit_install_dir}}'
-    dest: '{{subgit_parent_install_dir}}/subgit'
+    dest: '{{subgit_link_dir}}'
     state: link
 
 - name: add subgit into the default path
