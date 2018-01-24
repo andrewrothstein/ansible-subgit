@@ -15,7 +15,7 @@
         dest: /tmp/{{subgit_zip}}
         mode: 0644
         timeout: '{{subgit_timeout_seconds}}'
-        checksum: '{{subgit_checksum}}'
+        checksum: '{{subgit_zip_checksum}}'
     - name: unachive
       become: yes
       become_user: root
