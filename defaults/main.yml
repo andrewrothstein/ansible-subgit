@@ -1,10 +1,15 @@
 ---
-subgit_version : '3.3.0'
+subgit_version : '3.3.1'
+
+# https://subgit.com/download.html
 subgit_checksums:
   # https://subgit.com/download/subgit-3.2.5.zip
   '3.2.5': md5:17cc69fa7e472959e4209879fbbad01d
   # https://subgit.com/download/subgit-3.3.0.zip
   '3.3.0': md5:c77ae179e4bced55023d51a9dd7c95f9
+  # https://subgit.com/download/subgit-3.3.1.zip
+  '3.3.1': md5:ba69341367b56bb88863bbfd67c479bb
+
 subgit_mirror : https://subgit.com/download
 subgit_parent_install_dir : /usr/local
 subgit_timeout_seconds : 600
