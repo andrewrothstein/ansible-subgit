@@ -45,8 +45,7 @@
   with_items:
     - d: /etc/profile.d
       f: subgit.sh
-      m: '0644'
   template:
     src: '{{item.f}}.j2'
     dest: '{{item.d}}/{{item.f}}'
-    mode: '{{item.m}}'
+    mode: '{{item.m|default("0644")}}'
