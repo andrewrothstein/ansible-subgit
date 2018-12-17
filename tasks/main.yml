@@ -2,7 +2,7 @@
 - name: check for install...
   become: yes
   stat:
-    path: '{{subgit_install_dir}}'
+    path: '{{ subgit_install_dir }}'
   changed_when: False
   register: subgit_binary
 - when: not subgit_binary.stat.exists
@@ -11,32 +11,32 @@
       become: yes
       become_user: root
       get_url:
-        url: '{{subgit_zip_url}}'
-        dest: /tmp/{{subgit_zip}}
+        url: '{{ subgit_zip_url }}'
+        dest: /tmp/{{ subgit_zip }}
         mode: 0644
-        timeout: '{{subgit_timeout_seconds}}'
-        checksum: '{{subgit_zip_checksum}}'
+        timeout: '{{ subgit_timeout_seconds }}'
+        checksum: '{{ subgit_zip_checksum }}'
     - name: unachive
       become: yes
       become_user: root
       unarchive:
         remote_src: yes
-        src: /tmp/{{subgit_zip}}
-        dest: '{{subgit_parent_install_dir}}'
-        creates: '{{subgit_install_dir}}'
+        src: /tmp/{{ subgit_zip }}
+        dest: '{{ subgit_parent_install_dir }}'
+        creates: '{{ subgit_install_dir }}'
   always:
     - name: cleanup
       become: yes
       become_user: root
       file:
-        path: /tmp/{{subgit_zip}}
+        path: /tmp/{{ subgit_zip }}
         state: absent
 - name: link subgit
   become: yes
   become_user: root
   file:
-    src: '{{subgit_install_dir}}'
-    dest: '{{subgit_link_dir}}'
+    src: '{{ subgit_install_dir }}'
+    dest: '{{ subgit_link_dir }}'
     state: link
 
 - name: add subgit into the default path
@@ -46,6 +46,6 @@
     - d: /etc/profile.d
       f: subgit.sh
   template:
-    src: '{{item.f}}.j2'
-    dest: '{{item.d}}/{{item.f}}'
-    mode: '{{item.m|default("0644")}}'
+    src: '{{ item.f }}.j2'
+    dest: '{{ item.d }}/{{ item.f }}'
+    mode: '{{ item.m|default("0644") }}'
