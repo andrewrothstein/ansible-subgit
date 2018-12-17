@@ -1,5 +1,5 @@
 ---
-subgit_version: '3.3.4'
+subgit_version: '3.3.5'
 
 # https://subgit.com/download.html
 subgit_checksums:
@@ -13,6 +13,8 @@ subgit_checksums:
   '3.3.3': sha256:bb16bc9a1b386511ef8b56c0b4e2934e6283375c39bf7ad99bc56d39c1c7e317
   # https://subgit.com/download/subgit-3.3.4.zip
   '3.3.4': sha256:8e66f248b5bbbfe7733334a962aae9356fb13c918f8c12b4d4442f5188e4f3e9
+  # https://subgit.com/download/subgit-3.3.5.zip
+  '3.3.5': sha256:c69be5e8724e5c7260e40586abdf42b79e025ac4bbdd5bf76e4cafab6e860a38
 
 subgit_mirror: https://subgit.com/download
 subgit_parent_install_dir: /usr/local
