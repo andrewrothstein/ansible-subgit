@@ -1,41 +1,38 @@
----
+dependencies:
+- role: andrewrothstein.unarchive-deps
+  version: v1.0.10
+- role: andrewrothstein.openjdk
+  version: v1.0.0
 galaxy_info:
   author: Andrew Rothstein
-  description: subgit role
   company: BlackRock
+  description: subgit role
+  galaxy_tags:
+  - development
   license:
-    - MIT
+  - MIT
   min_ansible_version: 2.0
   platforms:
-    - name: Alpine
-      versions:
-        - all
-    - name: EL
-      versions:
-        - 7
-    - name: Fedora
-      versions:
-        - 23
-        - 24
-        - 25
-        - 26
-    - name: Archlinux
-      versions:
-        - all
-    - name: Debian
-      versions:
-        - jessie
-        - stretch
-    - name: Ubuntu
-      versions:
-        - trusty
-        - xenial
-
-  galaxy_tags:
-    - development
-
-dependencies:
-  - role: andrewrothstein.unarchive-deps
-    version: v1.0.10
-  - role: andrewrothstein.java-oracle-jre
-    version: v2.1.2
+  - name: Alpine
+    versions:
+    - all
+  - name: EL
+    versions:
+    - 7
+  - name: Fedora
+    versions:
+    - 23
+    - 24
+    - 25
+    - 26
+  - name: Archlinux
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - jessie
+    - stretch
+  - name: Ubuntu
+    versions:
+    - trusty
+    - xenial
