@@ -1,4 +1,4 @@
-**~
+**~*.retry
 Dockerfile.*
 requirements.yml
-*.zip
+!meta/requirements.yml

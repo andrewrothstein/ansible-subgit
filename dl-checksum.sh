@@ -1,14 +1,21 @@
-#!/usr/bin/env sh
-VER=${1:-3.3.8}
+#!/usr/bin/env bash
+set -e
 DIR=~/Downloads
-FILE=subgit-${VER}.zip
-URL=https://subgit.com/download/${FILE}
-LFILE=$DIR/$FILE
+MIRROR=https://subgit.com/download
 
-if [ ! -e $LFILE ];
-then
-    wget -q -O $LFILE $URL
-fi
+dl() {
+    local -r ver=$1
+    local -r file=subgit-${ver}.zip
+    local -r url="${MIRROR}/${file}"
+    local -r lfile="$DIR/${file}"
 
-printf "  # %s\n" $URL
-printf "  '%s': sha256:%s\n" $VER $(sha256sum $LFILE | awk '{print $1}')
+    if [ ! -e $lfile ];
+    then
+        curl -sSLf -o $lfile $url
+    fi
+
+    printf "  # %s\n" $url
+    printf "  '%s': sha256:%s\n" $ver $(sha256sum $lfile | awk '{print $1}')
+}
+
+dl ${1:-3.3.14}

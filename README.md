@@ -1,6 +1,6 @@
 andrewrothstein.subgit
 ===========================
-[![Build Status](https://travis-ci.org/andrewrothstein/ansible-subgit.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-subgit)
+![Build Status](https://github.com/andrewrothstein/ansible-subgit/actions/workflows/build.yml/badge.svg)
 
 Installs [SubGit](https://subgit.com/)
 

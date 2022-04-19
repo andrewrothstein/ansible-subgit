@@ -1,38 +1,38 @@
 ---
-- name: check for install...
-  become: yes
+- name: check for install in {{ subgit_install_dir }}
+  become: true
   stat:
     path: '{{ subgit_install_dir }}'
-  changed_when: False
+  changed_when: false
   register: subgit_binary
 - when: not subgit_binary.stat.exists
   block:
-    - name: download
-      become: yes
+    - name: downloading {{ subgit_zip_url }}
+      become: true
       become_user: root
       get_url:
         url: '{{ subgit_zip_url }}'
-        dest: /tmp/{{ subgit_zip }}
+        dest: '{{ subgit_tmp_zip }}'
         mode: 0644
         timeout: '{{ subgit_timeout_seconds }}'
         checksum: '{{ subgit_zip_checksum }}'
-    - name: unachive
-      become: yes
+    - name: unarchiving {{ subgit_tmp_zip }}
+      become: true
       become_user: root
       unarchive:
-        remote_src: yes
-        src: /tmp/{{ subgit_zip }}
+        remote_src: true
+        src: '{{ subgit_tmp_zip }}'
         dest: '{{ subgit_parent_install_dir }}'
         creates: '{{ subgit_install_dir }}'
   always:
-    - name: cleanup
-      become: yes
+    - name: rm {{ subgit_tmp_zip }}
+      become: true
       become_user: root
       file:
-        path: /tmp/{{ subgit_zip }}
+        path: '{{ subgit_tmp_zip }}'
         state: absent
-- name: link subgit
-  become: yes
+- name: linking {{ subgit_link_dir }} to {{ subgit_install_dir }}
+  become: true
   become_user: root
   file:
     src: '{{ subgit_install_dir }}'
@@ -40,7 +40,7 @@
     state: link
 
 - name: add subgit into the default path
-  become: yes
+  become: true
   become_user: root
   with_items:
     - d: /etc/profile.d

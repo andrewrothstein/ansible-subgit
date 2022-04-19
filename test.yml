@@ -1,4 +1,10 @@
 ---
 - hosts: all
   roles:
-    - role: '{{playbook_dir}}'
+    - role: '{{ playbook_dir }}'
+  tasks:
+    - command: sh -l -c 'subgit --version'
+      register: subgit_test_output
+    - name: subgit --version
+      debug:
+        msg: '{{ subgit_test_output.stdout }}'
