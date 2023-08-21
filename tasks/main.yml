@@ -1,4 +1,10 @@
 ---
+- include_role:
+    name: andrewrothstein.unarchivedeps
+- include_role:
+    name: andrewrothstein.temurin
+  vars:
+    openjdk_app: jre
 - name: check for install in {{ subgit_install_dir }}
   become: true
   stat:

@@ -1,33 +1,30 @@
 ---
-dependencies:
-- andrewrothstein.unarchive-deps
-- openjdk_app: jre
-  name: andrewrothstein.temurin
 galaxy_info:
   author: Andrew Rothstein
   company: BlackRock
   description: subgit role
   galaxy_tags:
-  - development
+    - development
   license:
-  - MIT
+    - MIT
   min_ansible_version: 2.0
   platforms:
-  - name: Archlinux
-    versions:
-    - all
-  - name: Debian
-    versions:
-    - bullseye
-    - buster
-  - name: EL
-    versions:
-    - 8
-  - name: Fedora
-    versions:
-    - 35
-    - 36
-  - name: Ubuntu
-    versions:
-    - bionic
-    - focal
+    - name: Archlinux
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - bookworm
+        - bullseye
+    - name: EL
+      versions:
+        - 8
+        - 9
+    - name: Fedora
+      versions:
+        - 37
+        - 38
+    - name: Ubuntu
+      versions:
+        - bionic
+        - jammy
