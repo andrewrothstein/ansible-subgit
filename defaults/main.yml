@@ -1,5 +1,5 @@
 ---
-subgit_version: 3.3.17
+subgit_version: 3.3.18
 
 subgit_mirror: https://subgit.com/download
 subgit_parent_install_dir: /usr/local
@@ -43,3 +43,5 @@ subgit_checksums:
   '3.3.16': sha256:a7bb81106e373781de77ef0761fdc8f65404be660b57ad6823246b3c7b869940
   # https://subgit.com/download/subgit-3.3.17.zip
   '3.3.17': sha256:bbc621685e333a50e911877fd1550df24e17f04d46e0f07e52426305f40a9096
+  # https://subgit.com/download/subgit-3.3.18.zip
+  '3.3.18': sha256:bb89606d7eb66e182fff8d7d89ffa3ca409592e379489e0e061a85d8d97d41ee

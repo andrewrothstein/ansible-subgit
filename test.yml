@@ -1,10 +1,13 @@
 ---
-- hosts: all
+- name: Testing andrewrothstein.subgit
+  hosts: all
   roles:
     - role: '{{ playbook_dir }}'
   tasks:
-    - command: sh -l -c 'subgit --version'
+    - name: Executing 'subgit --version'
+      ansible.builtin.command: sh -lc 'subgit --version'
+      changed_when: false
       register: subgit_test_output
-    - name: subgit --version
-      debug:
+    - name: Output from 'subgit --version'
+      ansible.builtin.debug:
         msg: '{{ subgit_test_output.stdout }}'

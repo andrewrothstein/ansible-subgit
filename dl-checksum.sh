@@ -18,6 +18,4 @@ dl() {
     printf "  '%s': sha256:%s\n" $ver $(sha256sum $lfile | awk '{print $1}')
 }
 
-dl 3.3.15
-dl 3.3.16
-dl ${1:-3.3.17}
+dl ${1:-3.3.18}
